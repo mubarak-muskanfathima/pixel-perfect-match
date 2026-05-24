@@ -82,6 +82,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         content:
           "VEMU Institute of Technology (Autonomous) — Student Mid Marks System.",
       },
+      { property: "og:title", content: "VEMU Mid Marks System" },
+      { name: "twitter:title", content: "VEMU Mid Marks System" },
+      { name: "description", content: "Student Mid Marks System manages academic records and approvals for Admin, HOD, Faculty, and Student roles." },
+      { property: "og:description", content: "Student Mid Marks System manages academic records and approvals for Admin, HOD, Faculty, and Student roles." },
+      { name: "twitter:description", content: "Student Mid Marks System manages academic records and approvals for Admin, HOD, Faculty, and Student roles." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/252c7573-a9b1-42cf-932e-3e269296c10d/id-preview-d51a1d8a--8c4497e2-d9c8-4731-8d1f-dda33d54aec8.lovable.app-1779602482802.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/252c7573-a9b1-42cf-932e-3e269296c10d/id-preview-d51a1d8a--8c4497e2-d9c8-4731-8d1f-dda33d54aec8.lovable.app-1779602482802.png" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:type", content: "website" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
