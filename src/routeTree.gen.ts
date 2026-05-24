@@ -9,13 +9,33 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as StudentRouteImport } from './routes/student'
 import { Route as SignupRouteImport } from './routes/signup'
+import { Route as OnboardingRouteImport } from './routes/onboarding'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as HodRouteImport } from './routes/hod'
+import { Route as FacultyRouteImport } from './routes/faculty'
+import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as HodReportsRouteImport } from './routes/hod.reports'
+import { Route as FacultyReportsRouteImport } from './routes/faculty.reports'
+import { Route as AdminUsersRouteImport } from './routes/admin.users'
+import { Route as AdminConfigRouteImport } from './routes/admin.config'
+import { Route as AdminAcademicsRouteImport } from './routes/admin.academics'
 
+const StudentRoute = StudentRouteImport.update({
+  id: '/student',
+  path: '/student',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SignupRoute = SignupRouteImport.update({
   id: '/signup',
   path: '/signup',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OnboardingRoute = OnboardingRouteImport.update({
+  id: '/onboarding',
+  path: '/onboarding',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LoginRoute = LoginRouteImport.update({
@@ -23,49 +43,178 @@ const LoginRoute = LoginRouteImport.update({
   path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
+const HodRoute = HodRouteImport.update({
+  id: '/hod',
+  path: '/hod',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FacultyRoute = FacultyRouteImport.update({
+  id: '/faculty',
+  path: '/faculty',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const HodReportsRoute = HodReportsRouteImport.update({
+  id: '/reports',
+  path: '/reports',
+  getParentRoute: () => HodRoute,
+} as any)
+const FacultyReportsRoute = FacultyReportsRouteImport.update({
+  id: '/reports',
+  path: '/reports',
+  getParentRoute: () => FacultyRoute,
+} as any)
+const AdminUsersRoute = AdminUsersRouteImport.update({
+  id: '/users',
+  path: '/users',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminConfigRoute = AdminConfigRouteImport.update({
+  id: '/config',
+  path: '/config',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminAcademicsRoute = AdminAcademicsRouteImport.update({
+  id: '/academics',
+  path: '/academics',
+  getParentRoute: () => AdminRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRouteWithChildren
+  '/faculty': typeof FacultyRouteWithChildren
+  '/hod': typeof HodRouteWithChildren
   '/login': typeof LoginRoute
+  '/onboarding': typeof OnboardingRoute
   '/signup': typeof SignupRoute
+  '/student': typeof StudentRoute
+  '/admin/academics': typeof AdminAcademicsRoute
+  '/admin/config': typeof AdminConfigRoute
+  '/admin/users': typeof AdminUsersRoute
+  '/faculty/reports': typeof FacultyReportsRoute
+  '/hod/reports': typeof HodReportsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRouteWithChildren
+  '/faculty': typeof FacultyRouteWithChildren
+  '/hod': typeof HodRouteWithChildren
   '/login': typeof LoginRoute
+  '/onboarding': typeof OnboardingRoute
   '/signup': typeof SignupRoute
+  '/student': typeof StudentRoute
+  '/admin/academics': typeof AdminAcademicsRoute
+  '/admin/config': typeof AdminConfigRoute
+  '/admin/users': typeof AdminUsersRoute
+  '/faculty/reports': typeof FacultyReportsRoute
+  '/hod/reports': typeof HodReportsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/admin': typeof AdminRouteWithChildren
+  '/faculty': typeof FacultyRouteWithChildren
+  '/hod': typeof HodRouteWithChildren
   '/login': typeof LoginRoute
+  '/onboarding': typeof OnboardingRoute
   '/signup': typeof SignupRoute
+  '/student': typeof StudentRoute
+  '/admin/academics': typeof AdminAcademicsRoute
+  '/admin/config': typeof AdminConfigRoute
+  '/admin/users': typeof AdminUsersRoute
+  '/faculty/reports': typeof FacultyReportsRoute
+  '/hod/reports': typeof HodReportsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/login' | '/signup'
+  fullPaths:
+    | '/'
+    | '/admin'
+    | '/faculty'
+    | '/hod'
+    | '/login'
+    | '/onboarding'
+    | '/signup'
+    | '/student'
+    | '/admin/academics'
+    | '/admin/config'
+    | '/admin/users'
+    | '/faculty/reports'
+    | '/hod/reports'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/login' | '/signup'
-  id: '__root__' | '/' | '/login' | '/signup'
+  to:
+    | '/'
+    | '/admin'
+    | '/faculty'
+    | '/hod'
+    | '/login'
+    | '/onboarding'
+    | '/signup'
+    | '/student'
+    | '/admin/academics'
+    | '/admin/config'
+    | '/admin/users'
+    | '/faculty/reports'
+    | '/hod/reports'
+  id:
+    | '__root__'
+    | '/'
+    | '/admin'
+    | '/faculty'
+    | '/hod'
+    | '/login'
+    | '/onboarding'
+    | '/signup'
+    | '/student'
+    | '/admin/academics'
+    | '/admin/config'
+    | '/admin/users'
+    | '/faculty/reports'
+    | '/hod/reports'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdminRoute: typeof AdminRouteWithChildren
+  FacultyRoute: typeof FacultyRouteWithChildren
+  HodRoute: typeof HodRouteWithChildren
   LoginRoute: typeof LoginRoute
+  OnboardingRoute: typeof OnboardingRoute
   SignupRoute: typeof SignupRoute
+  StudentRoute: typeof StudentRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/student': {
+      id: '/student'
+      path: '/student'
+      fullPath: '/student'
+      preLoaderRoute: typeof StudentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/signup': {
       id: '/signup'
       path: '/signup'
       fullPath: '/signup'
       preLoaderRoute: typeof SignupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/onboarding': {
+      id: '/onboarding'
+      path: '/onboarding'
+      fullPath: '/onboarding'
+      preLoaderRoute: typeof OnboardingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/login': {
@@ -75,6 +224,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/hod': {
+      id: '/hod'
+      path: '/hod'
+      fullPath: '/hod'
+      preLoaderRoute: typeof HodRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faculty': {
+      id: '/faculty'
+      path: '/faculty'
+      fullPath: '/faculty'
+      preLoaderRoute: typeof FacultyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -82,14 +252,99 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/hod/reports': {
+      id: '/hod/reports'
+      path: '/reports'
+      fullPath: '/hod/reports'
+      preLoaderRoute: typeof HodReportsRouteImport
+      parentRoute: typeof HodRoute
+    }
+    '/faculty/reports': {
+      id: '/faculty/reports'
+      path: '/reports'
+      fullPath: '/faculty/reports'
+      preLoaderRoute: typeof FacultyReportsRouteImport
+      parentRoute: typeof FacultyRoute
+    }
+    '/admin/users': {
+      id: '/admin/users'
+      path: '/users'
+      fullPath: '/admin/users'
+      preLoaderRoute: typeof AdminUsersRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/config': {
+      id: '/admin/config'
+      path: '/config'
+      fullPath: '/admin/config'
+      preLoaderRoute: typeof AdminConfigRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/academics': {
+      id: '/admin/academics'
+      path: '/academics'
+      fullPath: '/admin/academics'
+      preLoaderRoute: typeof AdminAcademicsRouteImport
+      parentRoute: typeof AdminRoute
+    }
   }
 }
 
+interface AdminRouteChildren {
+  AdminAcademicsRoute: typeof AdminAcademicsRoute
+  AdminConfigRoute: typeof AdminConfigRoute
+  AdminUsersRoute: typeof AdminUsersRoute
+}
+
+const AdminRouteChildren: AdminRouteChildren = {
+  AdminAcademicsRoute: AdminAcademicsRoute,
+  AdminConfigRoute: AdminConfigRoute,
+  AdminUsersRoute: AdminUsersRoute,
+}
+
+const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
+
+interface FacultyRouteChildren {
+  FacultyReportsRoute: typeof FacultyReportsRoute
+}
+
+const FacultyRouteChildren: FacultyRouteChildren = {
+  FacultyReportsRoute: FacultyReportsRoute,
+}
+
+const FacultyRouteWithChildren =
+  FacultyRoute._addFileChildren(FacultyRouteChildren)
+
+interface HodRouteChildren {
+  HodReportsRoute: typeof HodReportsRoute
+}
+
+const HodRouteChildren: HodRouteChildren = {
+  HodReportsRoute: HodReportsRoute,
+}
+
+const HodRouteWithChildren = HodRoute._addFileChildren(HodRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdminRoute: AdminRouteWithChildren,
+  FacultyRoute: FacultyRouteWithChildren,
+  HodRoute: HodRouteWithChildren,
   LoginRoute: LoginRoute,
+  OnboardingRoute: OnboardingRoute,
   SignupRoute: SignupRoute,
+  StudentRoute: StudentRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
